@@ -6,11 +6,16 @@ sudo apt-get upgrade -y
 sudo apt-get install git maven openjdk-8-jdk -y
 sudo apt-get install tomcat9 -y
 sudo apt-get install tomcat9-admin
+sudo cp /dev/null /etc/hostname
+sudo chmod o+w /etc/hostname
+sudo echo 'Node2' >> /etc/hostname  ------------------name 
 sudo chmod o+w /etc/tomcat9/tomcat-users.xml
 cp /dev/null /etc/tomcat9/tomcat-users.xml
 sudo echo '<tomcat-users>
 	<user username="venkat" password="venkat" roles="manager-script"/>
 </tomcat-users>' >> /etc/tomcat9/tomcat-users.xml
 sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sudo service ssh restart
 
 =====================================
+
