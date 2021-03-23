@@ -1,0 +1,21 @@
+Ansible Controller
+---------------------
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt install software-properties-common
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible -y
+================================================================================
+
+
+Managed Nodes
+--------------------
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo cp /dev/null /etc/hostname
+sudo chmod o+w /etc/hostname
+sudo echo 'Node2' >> /etc/hostname
+sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sudo service ssh restart
